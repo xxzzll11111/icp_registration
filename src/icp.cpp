@@ -32,6 +32,7 @@ public:
         pcl::PointCloud<pcl::PointXYZ> cloud_2;
         pcl::fromROSMsg(req.mapdata2,cloud_2);
 
+        std::cout << "guess:"<<req.guess<< std::endl;
         Eigen::Quaternionf qg = Eigen::Quaternionf(req.guess.rotation.w, req.guess.rotation.x, req.guess.rotation.y, req.guess.rotation.z);
         Eigen::Isometry3f guess(qg);
         guess(0,3) = req.guess.translation.x;
@@ -70,6 +71,7 @@ public:
         pcl::PointCloud<pcl::PointXYZ> cloud_2;
         pcl::fromROSMsg(cloud2,cloud_2);
 
+        std::cout << "guess:"<<req.guess<< std::endl;
         Eigen::Quaternionf qg = Eigen::Quaternionf(req.guess.rotation.w, req.guess.rotation.x, req.guess.rotation.y, req.guess.rotation.z);
         Eigen::Isometry3f guess(qg);
         guess(0,3) = req.guess.translation.x;
